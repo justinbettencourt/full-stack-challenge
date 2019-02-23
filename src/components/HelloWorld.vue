@@ -1,25 +1,42 @@
 <template>
-  	<div class="hello">
-		<!-- Name Text Box -->
-		<input v-model="name" type="text" placeholder="Name">
-		<br><br>
-		<!-- isTest Checkbox to determine if information is valid -->
-		<div>
-			<input type="checkbox" id="checkbox" v-model="isTest">
-			<label for="checkbox">isTest ({{ isTest }})</label>
-		</div>
-		<!-- Begin looping through the JSON date we received and stored in the data object "Questions" -->
-		<ul>
-			<li v-for="(question, index) in Questions" :key="index.id">
-				<div>
-					<p>Question #{{ question.number }}</p>
-					<p>{{ question.description }}</p>
-					<textarea rows="4" cols="50" v-model="question.answer"></textarea>
-				</div>
-			</li>
-		</ul>
-		<button @click="postToServer()">Send</button>
-  	</div>
+<v-app id="app" >
+	<li>
+		<v-container fluid grid-list-lg>
+			<v-layout row wrap>
+				<v-flex xs12 >
+					<v-card width=50% style="margin: auto">
+						<!-- Name Text Box -->
+						<input v-model="name" type="text" placeholder="Name">
+						<br><br>
+						<!-- isTest Checkbox to determine if information is valid -->
+						<div>
+							<input type="checkbox" id="checkbox" v-model="isTest">
+							<label for="checkbox">isTest ({{ isTest }})</label>
+						</div>
+
+					</v-card>
+				</v-flex>
+			</v-layout>
+		</v-container>
+	</li>
+	<li v-for="(question, index) in Questions" :key="index.id">
+		<v-container fluid grid-list-lg>
+			<v-layout row wrap>
+					<v-flex xs12>
+						<v-card width=50% style="margin: auto">
+							<p>Question #{{ question.number }}</p>
+							<p>{{ question.description }}</p>
+							<textarea rows="4" cols="50" v-model="question.answer"></textarea>
+						</v-card>
+					</v-flex>
+			</v-layout>
+		</v-container>
+	</li>
+
+		<v-btn color="primary">
+			<button @click="postToServer()">Send</button>
+		</v-btn>	
+</v-app>
 </template>
 
 <script>
