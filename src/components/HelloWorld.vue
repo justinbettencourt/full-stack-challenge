@@ -1,41 +1,53 @@
 <template>
 <v-app id="app" >
-	<li>
-		<v-container fluid grid-list-lg>
-			<v-layout row wrap>
-				<v-flex xs12 >
-					<v-card width=50% style="margin: auto">
-						<!-- Name Text Box -->
-						<input v-model="name" type="text" placeholder="Name">
-						<br><br>
-						<!-- isTest Checkbox to determine if information is valid -->
-						<div>
-							<input type="checkbox" id="checkbox" v-model="isTest">
-							<label for="checkbox">isTest ({{ isTest }})</label>
-						</div>
+	<v-container fluid grid-list-lg class="pa-0">
+		<v-layout row wrap >
+			<v-flex xs12>
+				<!-- 
+					Vuetify has different background colours for v-containers and v-lists.
 
+					** Temp fix by nesting the info card into a list and removing the padding around the container. **
+				-->
+				<v-list>
+					<v-card width=75% class="ma-auto elevation-3">
+						<v-flex class="ma-3">
+							<div class=" mt-3">
+								<p class="caption mb-0">Hello,</p>
+								<p class="subheading">Please enter your name:</p>
+							</div>
+					
+							<v-text-field
+								v-model="firstName"
+								label="First Name"
+								box
+							></v-text-field>
+							<v-text-field
+								v-model="lastName"
+								label="Last Name"
+								box
+							></v-text-field>
+							<v-checkbox v-model="isTest" :label="'isTest'"></v-checkbox>
+						</v-flex>
 					</v-card>
-				</v-flex>
-			</v-layout>
-		</v-container>
-	</li>
-	<li v-for="(question, index) in Questions" :key="index.id">
-		<v-container fluid grid-list-lg>
-			<v-layout row wrap>
-					<v-flex xs12>
-						<v-card width=50% style="margin: auto">
-							<p>Question #{{ question.number }}</p>
-							<p>{{ question.description }}</p>
-							<textarea rows="4" cols="50" v-model="question.answer"></textarea>
-						</v-card>
-					</v-flex>
-			</v-layout>
-		</v-container>
-	</li>
-
-		<v-btn color="primary">
-			<button @click="postToServer()">Send</button>
-		</v-btn>	
+				</v-list>
+				<v-list v-for="(question, index) in Questions" :key="index.id">
+					<v-card width=75% class="ma-auto elevation-3">
+						<v-flex class="ma-3">
+							<div class=" mt-3">
+								<p class="caption mb-0">Question #{{ question.number }}</p>
+								<p class="subheading">{{ question.description }}</p>
+							</div>
+							<v-textarea box label='Answer' v-model="question.answer"></v-textarea>
+						</v-flex>
+					</v-card>
+				</v-list>
+				<v-list class="text-xs-center">
+					<v-btn  class="elevation-3" color="primary" @click="postToServer()">Send</v-btn>
+				</v-list>
+			</v-flex>
+		</v-layout>
+	</v-container>
+	
 </v-app>
 </template>
 
@@ -45,7 +57,8 @@ export default {
 	name: "HelloWorld",
 	data() {
 		return {
-			name: '',
+			firstName: '',
+			lastName: '',
 			isTest: true,
 			Questions: {},
 		}
@@ -53,7 +66,7 @@ export default {
 	methods: {
 		postToServer() {
 			// We are going to set the data objects as variables to pass through the POST.
-			var name = this.name
+			var name = this.firstName + ' ' + this.lastName
 			var isTest = this.isTest
 			var questions = this.Questions
 			
@@ -99,19 +112,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>
