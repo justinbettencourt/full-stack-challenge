@@ -6,20 +6,45 @@ A Full Stack coding challenge.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+To run the project, you will need:
 
-Say what the step will be
-
+[Node.js](https://nodejs.org/en/download/) - Install Node to run the project.
 ```
-Express.js
-Request.js
-Axios.js
-Vue.js
-Vuetify
-Nodemon
+root folder
+npm run dev
 ```
 
-## Built With
+[Nodemon](https://nodemon.io/) - I used Nodemon to assist with any server changes made.
+```
+npm install -g nodemon
+cd server
+nodemon server.js
+```
 
-* [Vue.js](https://vuejs.org/) - Frontend framework 
-* [Express.js](https://maven.apache.org/) - Web Server
+### Node Frameworks & Packages Used
+
+[Express.js](https://expressjs.com/) - Web Server
+```
+npm install express --save
+```
+
+[Vue.js](https://vuejs.org/) - Frontend framework 
+```
+npm install vue
+```
+
+[Vuetify](https://vuetifyjs.com/en/) - Frontend Styles
+```
+npm install vuetify
+```
+
+[Request.js](https://github.com/request/request) - HTTP Client Backend
+```
+npm install request
+```
+
+[Axios.js](https://github.com/axios/axios) - HTTP Client Frontend
+````
+npm install axios
+````
+
