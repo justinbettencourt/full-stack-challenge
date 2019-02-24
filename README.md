@@ -1,21 +1,25 @@
-# interview-assignment
+# Interview Assignment
 
-> A Vue.js project
+A Full Stack coding challenge.
 
-## Build Setup
+## Getting Started
 
-``` bash
-# install dependencies
-npm install
+### Installing
 
-# serve with hot reload at localhost:8080
-npm run dev
+A step by step series of examples that tell you how to get a development env running
 
-# build for production with minification
-npm run build
+Say what the step will be
 
-# build for production and view the bundle analyzer report
-npm run build --report
+```
+Express.js
+Request.js
+Axios.js
+Vue.js
+Vuetify
+Nodemon
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Built With
+
+* [Vue.js](https://vuejs.org/) - Frontend framework 
+* [Express.js](https://maven.apache.org/) - Web Server
