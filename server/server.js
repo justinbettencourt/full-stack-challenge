@@ -3,68 +3,53 @@ const app = express();
 const request = require('request')
 const fs = require('fs');
 
-// Local API
-// var zomaronAPI = require('./ZomaronAPI.json');
-
-// Remote Web Server
-var bodyParser = require('body-parser')
 var userData = require('./UserData.json');
-var newUser = './UserData.json'
 var cors = require('cors')
+var userDataDir = './UserData.json'
+var zomaronAPI = 'https://api.zomaron.com/v1/coding/test1'
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
 
-// Local API GET
-// app.get('/', function (req, res) {
-// 	console.log("GET API response: " + res.statusCode);
-// 	res.send(zomaronAPI)
-// })
-
-// Local API POST
-// app.post('/userData', function (req, res) {	
-// 	console.log("POST response: " + res.statusCode);
-// 	console.log(req.body);
-// 	res.send(req.body);
-// 	fs.createWriteStream(newUser).write(JSON.stringify(req.body));
-// })
-
-// Remote API GET
+// GET Zomaron API Data
 app.get('/', function (req, res) {
 	request.get({
 		headers: {'content-type': 'application/json'},
-		url:'https://api.zomaron.com/v1/coding/test1', 
+		url: zomaronAPI, 
 	}, function (error, response, body) {
-		console.log("GET External API response: " + response.statusCode)
+		if (error) {
+			console.log('GET Error', err);
+		}
+		console.log("GET Response: " + response.statusCode + " * " + body)
 		res.send(body)
-		console.log(body)
     });
 })
 
-// GET saved User Data
+// GET saved User Data and display it
 app.get('/userData', function (req, res) {
 	console.log("GET UserData response: " + res.statusCode);
 	res.send(userData)
 })
 
-// This is a mess....
+// POST data to the Zomaron API.
 app.post('/userData', function (req, res) {	
-	console.log('Server Response Data: ', req.body);
 	request.post({
 		headers: {'content-type': 'application/json'},
-		url:'https://api.zomaron.com/v1/coding/test1/',
+		url: zomaronAPI,
 		json: userData
 	}, function (error, response, body){
-		console.log("POST External API response: " + response.statusCode)
-		res.send(body)
+		if (error) {
+			console.log('POST Error', error);
+		}
+		console.log("POST Response: " + response.statusCode + " * " , req.body)
 		console.log(body)
-		fs.createWriteStream(newUser).write(JSON.stringify(req.body));
+		res.send(body)
+		// Write to file for Web Server useage and viewing.
+		fs.createWriteStream(userDataDir).write(JSON.stringify(req.body));
 	});
 })
 
-// Check to see if Web Server is running and listening.
+// Open port 3000 and have it listening for changes.
 app.listen(3000, function () {
 	console.log('Listening on port 3000...')
 })
