@@ -57,7 +57,7 @@ export default {
 	},
 	methods: {
 		postToServer() {
-			// Setting the data objects as variables to pass through the POST.
+			// Setting the data objects to pass through the POST.
 			// When ready to submit, POST the data to the web server. Data will be written to /userData
 			axios.post('http://localhost:3000/userData', { 
 				name: this.firstName + ' ' + this.lastName,
