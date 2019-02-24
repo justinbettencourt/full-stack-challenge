@@ -3,11 +3,6 @@
 	<v-container fluid grid-list-lg class="pa-0">
 		<v-layout row wrap >
 			<v-flex xs12>
-				<!-- 
-					Vuetify has different background colours for v-containers and v-lists.
-
-					** Temp fix by nesting the info card into a list and removing the padding around the container. **
-				-->
 				<v-list>
 					<v-card width=75% class="ma-auto elevation-3">
 						<v-flex class="ma-3">
@@ -15,7 +10,6 @@
 								<p class="caption mb-0">Hello,</p>
 								<p class="subheading">Please enter your name:</p>
 							</div>
-					
 							<v-text-field
 								v-model="firstName"
 								label="First Name"
@@ -82,9 +76,7 @@ export default {
 				}
 			})
 			.then((response) => {
-				// response.data = newUser;
-				console.log('Sending to POST: ')
-				console.log(response.data)
+				console.log('Sending to POST')
 			})
 			
 		}
