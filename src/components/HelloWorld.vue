@@ -20,7 +20,7 @@
 									label="Last Name"
 									box
 								></v-text-field>
-								<v-checkbox class="mt-0 pt-0" v-model="isTest" :label="'isTest'"></v-checkbox>
+								<!-- <v-checkbox class="mt-0 pt-0" v-model="isTest" :label="'isTest'"></v-checkbox> -->
 							</v-flex>
 						</v-card>
 					</v-list>
@@ -51,7 +51,7 @@ export default {
 		return {
 			firstName: '',
 			lastName: '',
-			isTest: true,
+			isTest: false,
 			Questions: {},
 		}
 	},
