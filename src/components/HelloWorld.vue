@@ -5,8 +5,8 @@
 				<v-flex s12 md4>
 					<v-list class="pa-0">
 						<v-card class="ma-auto elevation-3">
-							<v-flex class="ma-3">
-								<div class=" pt-3">
+							<v-flex class="ma-4">
+								<div class=" pt-4">
 									<p class="caption mb-0">Hello,</p>
 									<p class="subheading mb-0">Please enter your name:</p>
 								</div>
@@ -26,8 +26,8 @@
 					</v-list>
 					<v-list v-for="(question, index) in Questions" :key="index.id" class="pa-0">
 						<v-card class="ma-auto elevation-3">
-							<v-flex class="ma-3">
-								<div class=" pt-3">
+							<v-flex class="ma-4">
+								<div class=" pt-4">
 									<p class="caption mb-0">Question #{{ question.number }}</p>
 									<p class="subheading mb-0">{{ question.description }}</p>
 								</div>
