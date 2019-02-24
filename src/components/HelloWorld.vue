@@ -1,14 +1,14 @@
 <template>
 	<v-app id="app" >
-		<v-container fluid grid-list-lg class="pa-0">
-			<v-layout row wrap >
-				<v-flex xs12>
-					<v-list>
-						<v-card width=65% class="ma-auto elevation-3">
+		<v-container>
+			<v-layout align-center justify-center>
+				<v-flex s12 md4>
+					<v-list class="pa-0">
+						<v-card class="ma-auto elevation-3">
 							<v-flex class="ma-3">
-								<div class=" mt-3">
+								<div class=" pt-3">
 									<p class="caption mb-0">Hello,</p>
-									<p class="subheading">Please enter your name:</p>
+									<p class="subheading mb-0">Please enter your name:</p>
 								</div>
 								<v-text-field
 									v-model="firstName"
@@ -20,24 +20,24 @@
 									label="Last Name"
 									box
 								></v-text-field>
-								<v-checkbox v-model="isTest" :label="'isTest'"></v-checkbox>
+								<v-checkbox class="mt-0 pt-0" v-model="isTest" :label="'isTest'"></v-checkbox>
 							</v-flex>
 						</v-card>
 					</v-list>
-					<v-list v-for="(question, index) in Questions" :key="index.id">
-						<v-card width=65% class="ma-auto elevation-3">
+					<v-list v-for="(question, index) in Questions" :key="index.id" class="pa-0">
+						<v-card class="ma-auto elevation-3">
 							<v-flex class="ma-3">
-								<div class=" mt-3">
+								<div class=" pt-3">
 									<p class="caption mb-0">Question #{{ question.number }}</p>
-									<p class="subheading">{{ question.description }}</p>
+									<p class="subheading mb-0">{{ question.description }}</p>
 								</div>
-								<v-textarea box label='Answer' v-model="question.answer"></v-textarea>
+								<v-textarea box label='Answer here...' v-model="question.answer"></v-textarea>
 							</v-flex>
 						</v-card>
 					</v-list>
-					<v-list class="text-xs-center">
-						<v-btn  class="elevation-3" color="primary" @click="postToServer()">Send</v-btn>
-					</v-list>
+					<v-layout align-center justify-center>
+						<v-btn class="elevation-3" color="primary" @click="postToServer()">Send</v-btn>
+					</v-layout>
 				</v-flex>
 			</v-layout>
 		</v-container>
