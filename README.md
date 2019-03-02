@@ -1,4 +1,4 @@
-# Interview Assignment
+# Full Stack Challenge
 
 A Full Stack coding challenge.
 
